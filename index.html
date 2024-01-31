@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas-Test</title>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script >
+        const canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "orange";
+
+    //Filled triangle
+    ctx.beginPath();
+    ctx.moveTo(25, 25);
+    ctx.lineTo(105, 25);
+    ctx.lineTo(25, 105);
+    ctx.fill();
+
+    // Stroked triangle
+    ctx.beginPath();
+    ctx.moveTo(125, 125);
+    ctx.lineTo(125, 45);
+    ctx.lineTo(45, 125);
+    ctx.closePath();
+    ctx.stroke();
+    
+    //Box with cut out and outline inside cut out
+    ctx.fillRect(225, 25, 100, 100);
+    ctx.clearRect(245, 45, 60, 60);
+    ctx.strokeRect(250, 50, 50, 50);
+
+    //Smily Face
+    ctx.beginPath();
+    ctx.arc(475, 75, 50, 0, Math.PI * 2, true); // Outer circle
+    ctx.moveTo(510, 75);
+    ctx.arc(475, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
+    ctx.moveTo(465, 65);
+    ctx.arc(460, 65, 5, 0, Math.PI * 2, true); // Left eye
+    ctx.moveTo(495, 65);
+    ctx.arc(490, 65, 5, 0, Math.PI * 2, true); // Right eye
+    ctx.stroke();
+
+    //Speach Bubble
+    ctx.beginPath();
+    ctx.moveTo(275, 225);
+    ctx.quadraticCurveTo(225, 225, 225,262.5);
+    ctx.quadraticCurveTo(225, 300, 250, 300);
+    ctx.quadraticCurveTo(250, 320, 230, 325);
+    ctx.quadraticCurveTo(260, 320, 265, 300);
+    ctx.quadraticCurveTo(325, 300, 325, 262.5);
+    ctx.quadraticCurveTo(325, 225, 275, 225);
+    ctx.stroke();
+
+    //Heart
+    ctx.beginPath();
+    ctx.moveTo(475, 240);
+    ctx.bezierCurveTo(475, 237, 470, 225, 450, 225);
+    ctx.bezierCurveTo(420, 225, 420, 262.5, 420, 262.5);
+    ctx.bezierCurveTo(420, 280, 440, 302, 475, 320);
+    ctx.bezierCurveTo(510, 302, 530, 280, 530, 262.5);
+    ctx.bezierCurveTo(530, 262.5, 530, 225, 500, 225);
+    ctx.bezierCurveTo(485, 225, 475, 237, 475, 240);
+    ctx.fill();
+
+    //random Shape filled
+    ctx.beginPath(); 
+    ctx.moveTo(75, 240);
+    ctx.bezierCurveTo(75, 237, 70, 225, 5, 225);
+    ctx.bezierCurveTo(20, 225, 20, 262.5, 20, 262.5);
+    ctx.bezierCurveTo(20, 280, 40, 302, 75, 320);
+    ctx.bezierCurveTo(110, 302, 130, 280, 130, 262.5);
+    ctx.bezierCurveTo(130, 262.5, 130, 225, 150, 225);
+    ctx.bezierCurveTo(85, 225, 75, 237, 75, 240);
+    ctx.fill();
+
+    ctx.beginPath();
+
+    //SHAPE With Cut Out
+// Outter shape clockwise ⟳
+ctx.moveTo(600, 25);
+ctx.lineTo(750, 25);
+ctx.lineTo(675, 154.9);
+// Inner shape anticlockwise ↺
+ctx.moveTo(675, 40);
+ctx.lineTo(650, 80);
+ctx.lineTo(700, 80);
+
+//PATH2D
+const rectangle = new Path2D();
+    rectangle.rect(810, 10, 50, 50);
+
+    const circle = new Path2D();
+    circle.arc(900, 35, 25, 0, 2 * Math.PI);
+
+    ctx.stroke(rectangle);
+    ctx.fill(circle);
+
+ctx.fill();
+  }
+
+
+    </script>
+</body>
+</html>
